@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour {
 
 
 	public float speed;
-	public GameObject Legs;
+	public GameObject mainCamera;
+	public GameObject legs;
 	private Animator animatorLegs;
 	private Rigidbody2D rb;
 	private Transform tr;
@@ -18,13 +19,14 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D>();
 		tr = GetComponent<Transform>();
-		animatorLegs = Legs.GetComponent<Animator> ();
+		animatorLegs = legs.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		//rb.velocity = Vector3.forward * speed;
+
 	}
 
 	void FixedUpdate()
@@ -50,12 +52,14 @@ public class PlayerController : MonoBehaviour {
 
 		//Rotation to follow mouse
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		//Vector3 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+		//Debug.Log("mousePosition" + mousePosition);
 		Quaternion PlayerRotation = Quaternion.LookRotation (tr.position - mousePosition, Vector3.forward);
 		tr.rotation = PlayerRotation;
 
 		//negate 3D rotation //no need in orthographic ?
-		//transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
-		//rb.angularVelocity = 0;
+		transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+		rb.angularVelocity = 0;
 	}
 
 	IEnumerator SmoothMovement(Vector3 movement)
