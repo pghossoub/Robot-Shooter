@@ -84,13 +84,13 @@ public class BoardManager : MonoBehaviour {
 
 	UnityEngine.Object InstantiateInGrid(UnityEngine.Object tile, Vector3 position, Quaternion rotation)
 	{
-	    Vector3 gridFactor= new Vector3 (0.32f, 0.32f, 1f);
-		//Vector3 gridPosition;
+	    Vector3 gridFactor= new Vector3 (0.32f, 0.32f, 1f); //Because tiles are 32x32
 		return Instantiate (tile, Vector3.Scale(position, gridFactor), rotation);
 	}
 
 	public void SetupScene()
 	{
+		InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 		BoardSetup ();
 		InitialiseList ();
 		LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
@@ -98,6 +98,6 @@ public class BoardManager : MonoBehaviour {
 		//int enemyCount = (int)Mathf.Log (level, 2f);
 		//LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
 		//Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
-		InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
+		//InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 	}
 }

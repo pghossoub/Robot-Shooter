@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public float fireRate; //seconds
+	public GameObject shot;
+	public Transform shotSpawn;
+
+	//private because component attached to weapon
+	private AudioSource shotSound;
+	private float nextFire;
+
+	void Start () 
+	{
+		nextFire = 0f;
+		shotSound = GetComponent<AudioSource> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+	{
+		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			shotSound.Play ();
+		}
 	}
 }
