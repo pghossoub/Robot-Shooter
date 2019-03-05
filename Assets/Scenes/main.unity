@@ -211,12 +211,26 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1292516415}
+    - target: {fileID: 114954815452550828, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: trPlayer
+      value: 
+      objectReference: {fileID: 719054267}
+    - target: {fileID: 1732824607882034, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &719054262 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1732824607882034, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+    type: 2}
+  m_PrefabInternal: {fileID: 444102298}
+--- !u!4 &719054267 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4124338707267564, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
     type: 2}
   m_PrefabInternal: {fileID: 444102298}
 --- !u!1 &1292516415
