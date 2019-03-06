@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4756750189651578}
   - component: {fileID: 212168061343113902}
-  - component: {fileID: 114797404575972486}
   - component: {fileID: 50925998337078998}
   - component: {fileID: 58462370375551864}
+  - component: {fileID: 114265448655146212}
+  - component: {fileID: 114599527407651070}
   m_Layer: 0
   m_Name: Bullet1
   m_TagString: Untagged
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483760561716642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.464, y: -1.414, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +59,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: c67c0cab27a69ef48a16f93cf5c0feeb, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -78,7 +79,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.04
---- !u!114 &114797404575972486
+--- !u!114 &114265448655146212
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,16 +87,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1483760561716642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af7a81eda27e00429682e83d4dfa01c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1112820f7a61fad40969463a4f2a71c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsReady: 0
-  vDmg: 1
-  vRebounce: 0
-  Speed: 1
-  vImpactFX: {fileID: 0}
-  vProjFactionType: 1
-  vGameManager: {fileID: 0}
+  speed: 2
+--- !u!114 &114599527407651070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483760561716642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c8dbd6349c006428435294e667063b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  impact: {fileID: 1510687501853452, guid: d3fca6e6821cb0b4b9e50f025ef4f984, type: 2}
 --- !u!212 &212168061343113902
 SpriteRenderer:
   m_ObjectHideFlags: 1

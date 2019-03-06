@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : Projectile {
+public class EnemyBullet : Projectile {
 
 	protected override void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.CompareTag("Enemy")){
+		if(other.CompareTag("Player")){
 			Instantiate(impact, tr.position, tr.rotation);
-			other.GetComponent<Enemy>().LosePv(damage);
-			other.GetComponent<Enemy>().bounceOnImpact(tr);
+			//other.GetComponent<Player>().LosePv(damage);
+			//other.GetComponent<Player>().bounceOnImpact(tr);
 		}
 
 		base.OnTriggerEnter2D(other);

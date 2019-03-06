@@ -16,7 +16,7 @@ public abstract class Projectile : MonoBehaviour {
 
 	protected virtual void OnTriggerEnter2D(Collider2D other)
 	{
-		Instantiate(impact, tr.position, tr.rotation);
+		//Instantiate(impact, tr.position, tr.rotation);
 		Destroy(gameObject);
 	}
 }

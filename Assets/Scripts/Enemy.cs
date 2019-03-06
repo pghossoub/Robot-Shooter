@@ -28,28 +28,34 @@ public class Enemy : MonoBehaviour {
 
 		player = GameObject.FindWithTag("Player");
 		trPlayer = player.GetComponent<Transform> ();
+
+
+		//Attack!
+		StartCoroutine (Attack());
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-		//Vector3 direction = tr.position - trPlayer.position;
-		//Debug.Log ("direction: "+ direction);
-		//tr.rotation = Quaternion.LookRotation (direction, Vector3.forward);
-		//Debug.Log(tr.position - trPlayer.position);
+		//Aim Player
 
-		//Quaternion enemyRotation = Quaternion.LookRotation (tr.position - trPlayer.position, Vector3.forward);
-		//tr.rotation = enemyRotation;
-
+		Vector3 playerPosition = Camera.main.WorldToScreenPoint (trPlayer.position);
+		Vector3 enemyPosition = Camera.main.WorldToScreenPoint (tr.position);
+		Vector3 direction = (playerPosition - enemyPosition);
+		Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.back);
+		lookRotation.x = 0;
+		lookRotation.y = 0;
+		tr.rotation = Quaternion.Slerp(tr.rotation, lookRotation, 1f);
 		//tr.eulerAngles = new Vector3 (0, 0, tr.eulerAngles.z);
-		//rb.angularVelocity = 0;
 
-		//Quaternion PlayerRotation = Quaternion.LookRotation (tr.position - mousePosition, Vector3.forward);
-		//tr.rotation = PlayerRotation;
+	}
 
-		Vector3 direction = (trPlayer.position - tr.position).normalized;
-		Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.forward);
-		tr.rotation = Quaternion.Slerp(tr.rotation, lookRotation, Time.deltaTime * 100);
-		tr.eulerAngles = new Vector3 (0, 0, tr.eulerAngles.z);
+	IEnumerator Attack ()
+	{
+		while(true)
+		{
+			Instantiate (shot, shotSpawn.position, tr.rotation);
+			yield return new WaitForSeconds (fireRate);
+		}
 	}
 
 	public void LosePv (float damage)
