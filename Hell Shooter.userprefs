@@ -1,16 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyBullet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BoardManager.cs">
     <Files>
       <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Mover.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Mover.cs" Line="13" Column="38" />
       <File FileName="Assets\Scripts\BoardManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerBullet.cs" Line="14" Column="3" />
-      <File FileName="Assets\Scripts\DestroyByTime.cs" Line="12" Column="3" />
-      <File FileName="Assets\Scripts\Projectile.cs" Line="20" Column="23" NotebookId="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="56" Column="41" NotebookId="1" />
-      <File FileName="Assets\Scripts\EnemyBullet.cs" Line="13" Column="4" NotebookId="1" />
+      <File FileName="Assets\Scripts\DestroyByTime.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WeaponController.cs" Line="14" Column="32" />
+      <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerBullet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyBullet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="22" Column="49" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="30" Column="49" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

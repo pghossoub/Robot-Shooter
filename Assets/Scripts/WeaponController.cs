@@ -9,8 +9,9 @@ public class WeaponController : MonoBehaviour {
 	public Transform shotSpawn;
 
 	//private because component attached to weapon
-	private AudioSource shotSound;
+	//private AudioSource shotSound;
 	private float nextFire;
+	private AudioSource shotSound;
 
 	void Start () 
 	{

@@ -5,7 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
 	public float pv;
+	public float speed;
 	public float fireRate; //seconds
+	public float waitTime;
 	public GameObject shot;
 	public Transform shotSpawn;
 	public GameObject legs;
@@ -25,10 +27,13 @@ public class Enemy : MonoBehaviour {
 		shotSound = GetComponent<AudioSource> ();
 		tr = GetComponent<Transform> ();
 		rb = GetComponent<Rigidbody2D> ();
+		animatorLegs = legs.GetComponent<Animator> ();
 
 		player = GameObject.FindWithTag("Player");
 		trPlayer = player.GetComponent<Transform> ();
 
+		//Move
+		StartCoroutine(Move());
 
 		//Attack!
 		StartCoroutine (Attack());
@@ -49,11 +54,24 @@ public class Enemy : MonoBehaviour {
 
 	}
 
+	IEnumerator Move ()
+	{
+		while (true) 
+		{
+			animatorLegs.SetTrigger ("Walk");
+			rb.AddForce (tr.rotation * Vector3.up * speed);
+			yield return null;
+		}
+	}
+
 	IEnumerator Attack ()
 	{
+		yield return new WaitForSeconds (waitTime);
+
 		while(true)
 		{
 			Instantiate (shot, shotSpawn.position, tr.rotation);
+			shotSound.Play ();
 			yield return new WaitForSeconds (fireRate);
 		}
 	}

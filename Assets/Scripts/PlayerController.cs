@@ -38,13 +38,6 @@ public class PlayerController : MonoBehaviour {
 
 			Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
 
-			//Move with rb.velocity
-			//rb.velocity = movement * speed;
-
-			//Smooth try
-			//if (Input.GetKey ("right") || Input.GetKey ("left") || Input.GetKey ("up") || Input.GetKey ("down"))
-			//	StartCoroutine (SmoothMovement (movement));
-
 			//Move with rigid.AddForce
 			rb.AddForce(movement * speed);
 			animatorLegs.SetTrigger ("Walk");
