@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198639322616077048}
   - component: {fileID: 199252760609357652}
   - component: {fileID: 82526265243634244}
+  - component: {fileID: 114775328114903580}
   m_Layer: 0
   m_Name: ImpactExplosion
   m_TagString: Untagged
@@ -122,6 +123,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114775328114903580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746730878426804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b8932d2c204f042b6d44ec7790b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
 --- !u!198 &198639322616077048
 ParticleSystem:
   m_ObjectHideFlags: 1

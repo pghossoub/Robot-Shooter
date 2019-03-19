@@ -19,8 +19,8 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 
-	public int columns = 8;
-	public int rows = 8;
+	public NumberOf rangeColumns = new NumberOf (10, 18);
+	public NumberOf rangeRows = new NumberOf (10, 18);
 
 	public NumberOf wallCount = new NumberOf (1, 2);
 	public NumberOf enemyCount = new NumberOf (2, 3);
@@ -33,6 +33,8 @@ public class BoardManager : MonoBehaviour {
 
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3> ();
+	private int rows;
+	private int columns;
 
 	void InitialiseList()
 	{
@@ -90,6 +92,9 @@ public class BoardManager : MonoBehaviour {
 
 	public void SetupScene()
 	{
+		rows = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
+		columns = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
+
 		InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 		BoardSetup ();
 		InitialiseList ();
