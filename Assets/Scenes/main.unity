@@ -144,8 +144,8 @@ MonoBehaviour:
     minimum: 10
     maximum: 18
   wallCount:
-    minimum: 1
-    maximum: 2
+    minimum: 10
+    maximum: 15
   enemyCount:
     minimum: 2
     maximum: 3
@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: 1310702317676912, guid: 65b623b6f4e25d449ac7a967527fb1db, type: 2}
   wallTiles:
   - {fileID: 1310702317676912, guid: 65b623b6f4e25d449ac7a967527fb1db, type: 2}
+  - {fileID: 1310586492755324, guid: 707f6170b3e89eb4285118c7ff40b610, type: 2}
   enemyTiles:
   - {fileID: 1133458087687930, guid: 0a7b4123c8c94954e9fb9ba2b69ece07, type: 2}
   exit: {fileID: 1328004390199082, guid: 774af6f1e4c87db4b918c6504eb32363, type: 2}
@@ -223,6 +224,11 @@ Prefab:
     - target: {fileID: 1732824607882034, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 82589567610661326, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}

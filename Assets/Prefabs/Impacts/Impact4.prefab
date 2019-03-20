@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 82276780308974478}
   - component: {fileID: 198138478507279582}
   - component: {fileID: 199559633641681046}
-  - component: {fileID: 114086315779691206}
+  - component: {fileID: 114920955567902228}
   m_Layer: 0
   m_Name: Impact4
   m_TagString: Untagged
@@ -54,7 +54,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 44417112861d9eb4ea53f09442a8b038, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -123,7 +123,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114086315779691206
+--- !u!114 &114920955567902228
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -131,9 +131,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346351358799626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfe6233b762c5a44ba5ab17926fbd3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b8932d2c204f042b6d44ec7790b5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 1
 --- !u!198 &198138478507279582
 ParticleSystem:
   m_ObjectHideFlags: 1

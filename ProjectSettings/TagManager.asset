@@ -8,6 +8,7 @@ TagManager:
   - Tile
   - Projectile
   - Enemy
+  - Damaged Wall
   layers:
   - Default
   - TransparentFX
