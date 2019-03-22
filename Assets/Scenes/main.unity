@@ -230,6 +230,40 @@ Prefab:
       propertyPath: m_Volume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: pv
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187280015463548, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903759966766728, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: deathExplosion
+      value: 
+      objectReference: {fileID: 1746730878426804, guid: 2037de89caf7ec0468719757002d06b4,
+        type: 2}
+    - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: blinkDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: blinkTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: nbBlink
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
   m_IsPrefabParent: 0

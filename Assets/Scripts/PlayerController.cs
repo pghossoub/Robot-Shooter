@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-
+	public float pv;
 	public float speed;
+	public int nbBlink;
+	public float blinkTime;
 	public GameObject mainCamera;
 	public GameObject legs;
+	public GameObject deathExplosion;
+
+
 	private Animator animatorLegs;
 	private Rigidbody2D rb;
 	private Transform tr;
+	private SpriteRenderer[] sr;
 
+	private bool isBlinking;
 
-
-	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D>();
 		tr = GetComponent<Transform>();
 		animatorLegs = legs.GetComponent<Animator> ();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		//rb.velocity = Vector3.forward * speed;
-
+		sr = GetComponentsInChildren<SpriteRenderer> ();
+		isBlinking = false;
 	}
 
 	void FixedUpdate()
@@ -45,8 +45,6 @@ public class PlayerController : MonoBehaviour {
 
 		//Rotation to follow mouse
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		//Vector3 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
-		//Debug.Log("mousePosition" + mousePosition);
 		Quaternion PlayerRotation = Quaternion.LookRotation (tr.position - mousePosition, Vector3.forward);
 		tr.rotation = PlayerRotation;
 
@@ -55,18 +53,42 @@ public class PlayerController : MonoBehaviour {
 		rb.angularVelocity = 0;
 	}
 
-	IEnumerator SmoothMovement(Vector3 movement)
+	IEnumerator blink()
 	{
-		float startime = Time.time;
-		Vector3 start_pos = tr.position; //Starting position.
-		Vector3 end_pos = tr.position + movement; //Ending position.
+		isBlinking = true;
+		int locNbBlink = nbBlink;
 
-		while (start_pos != end_pos && ((Time.time - startime) * speed) < 1f) { 
-			//float move = Mathf.Lerp (0, 1, (Time.time - startime) * speed);
-			rb.AddForce(movement * speed);
-			//transform.position += direction * move;
+		while (locNbBlink > 0f) {
+			locNbBlink -= 1;
 
-			yield return null;
+			//toggle renderer
+			foreach (SpriteRenderer spriteRenderer in sr) {
+				spriteRenderer.enabled = !spriteRenderer.enabled;
+			}
+			//wait for a bit
+			yield return new WaitForSeconds(blinkTime);
+		}
+
+		//make sure renderer is enabled when we exit
+		foreach (SpriteRenderer spriteRenderer in sr) {
+			spriteRenderer.enabled = true;
+		}
+		isBlinking = false;
+	}
+
+	public void LosePv (float damage, GameObject impact)
+	{
+		if (isBlinking == false) {
+			
+			Instantiate(impact, tr.position, tr.rotation);
+			pv = pv - damage;
+
+			if (pv <= 0) {
+				Instantiate (deathExplosion, tr.position, tr.rotation);
+				Destroy (gameObject);
+			} else {
+				StartCoroutine (blink ());
+			}
 		}
 	}
 }

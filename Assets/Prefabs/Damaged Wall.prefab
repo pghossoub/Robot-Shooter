@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmgSprites:
   - {fileID: 21300000, guid: cbd6b88c44f3c4b4c8c88cc8f401687f, type: 3}
-  - {fileID: 21300000, guid: c1f7581a9ce09b34fa934112ebb8da69, type: 3}
+  - {fileID: 21300000, guid: 985afe36b767972488c934a9ac859ee3, type: 3}
   hp: 3
   destroyImpact: {fileID: 1346351358799626, guid: 3c7323c1fe4414743a9cb595b3343a11,
     type: 2}
