@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4969629660001676}
   - component: {fileID: 212391942357484566}
   m_Layer: 0
-  m_Name: Floor9
-  m_TagString: Untagged
+  m_Name: Exit
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

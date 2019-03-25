@@ -13,14 +13,13 @@ public class Enemy : MonoBehaviour {
 	public GameObject legs;
 	public GameObject deathExplosion;
 
-
-	//private because component attached to enemy
 	private Animator animatorLegs;
 	private AudioSource shotSound;
 	private Transform tr;
 	private Rigidbody2D rb;
 	private GameObject player;
 	private Transform trPlayer;
+	private GameManager gameManager;
 
 	void Start () 
 	{
@@ -31,6 +30,8 @@ public class Enemy : MonoBehaviour {
 
 		player = GameObject.FindWithTag("Player");
 		trPlayer = player.GetComponent<Transform> ();
+
+		gameManager = GameObject.FindWithTag("Game Manager").GetComponent<GameManager>();
 
 		//Move
 		StartCoroutine(Move());
@@ -79,8 +80,15 @@ public class Enemy : MonoBehaviour {
 	public void LosePv (float damage)
 	{
 		pv = pv - damage;
+
 		if (pv <= 0) {
 			Instantiate (deathExplosion, tr.position, tr.rotation);
+			gameManager.RemoveEnemy ();
+
+			if (gameManager.CheckNoEnemyLeft ()) {
+				gameManager.OpenExit ();
+			}
+
 			Destroy (gameObject);
 		}
 	}

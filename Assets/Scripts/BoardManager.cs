@@ -22,14 +22,16 @@ public class BoardManager : MonoBehaviour {
 	public NumberOf rangeColumns = new NumberOf (10, 18);
 	public NumberOf rangeRows = new NumberOf (10, 18);
 
-	public NumberOf wallCount = new NumberOf (1, 2);
+	public NumberOf wallCount = new NumberOf (10, 20);
 	public NumberOf enemyCount = new NumberOf (2, 3);
 
 	public GameObject[] floorTiles;
 	public GameObject[] outerWallTiles;
 	public GameObject[] wallTiles;
 	public GameObject[] enemyTiles;
-	public GameObject exit;
+	public GameObject exitTile;
+
+	public int nbEnemy;
 
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3> ();
@@ -72,7 +74,7 @@ public class BoardManager : MonoBehaviour {
 		return randomPosition;
 	}
 
-	void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
+	int LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
 	{
 		int objectCount = Random.Range (minimum, maximum + 1);
 
@@ -82,6 +84,7 @@ public class BoardManager : MonoBehaviour {
 			//Instantiate (tileChoice, randomPosition, Quaternion.identity);
 			InstantiateInGrid (tileChoice, randomPosition, Quaternion.identity);
 		}
+		return objectCount;
 	}
 
 	UnityEngine.Object InstantiateInGrid(UnityEngine.Object tile, Vector3 position, Quaternion rotation)
@@ -95,11 +98,12 @@ public class BoardManager : MonoBehaviour {
 		rows = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
 		columns = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
 
-		InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
+		InstantiateInGrid (exitTile, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 		BoardSetup ();
 		InitialiseList ();
 		LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
-		LayoutObjectAtRandom (enemyTiles, enemyCount.minimum, enemyCount.maximum);
+		nbEnemy = LayoutObjectAtRandom (enemyTiles, enemyCount.minimum, enemyCount.maximum);
+
 		//int enemyCount = (int)Mathf.Log (level, 2f);
 		//LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
 		//Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);

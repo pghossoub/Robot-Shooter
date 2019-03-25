@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour {
 
 	public float pv;
 	public float speed;
-	public int nbBlink;
+
 	public float blinkTime;
+	public float blinkDuration;
+	private float nbBlink;
+
 	public GameObject mainCamera;
 	public GameObject legs;
 	public GameObject deathExplosion;
@@ -26,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 		tr = GetComponent<Transform>();
 		animatorLegs = legs.GetComponent<Animator> ();
 		sr = GetComponentsInChildren<SpriteRenderer> ();
+
+		nbBlink = blinkDuration / blinkTime;
 		isBlinking = false;
 	}
 
@@ -53,10 +58,20 @@ public class PlayerController : MonoBehaviour {
 		rb.angularVelocity = 0;
 	}
 
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.tag == "Open Exit") {
+			Debug.Log("Next Level!");
+			//Invoke ("Restart", restartLevelDelay);
+			//enabled = false;
+		}
+	}
+
 	IEnumerator blink()
 	{
 		isBlinking = true;
-		int locNbBlink = nbBlink;
+		//float nbBlink = blinkDuration / blinkTime;
+		int locNbBlink = (int)nbBlink;
 
 		while (locNbBlink > 0f) {
 			locNbBlink -= 1;

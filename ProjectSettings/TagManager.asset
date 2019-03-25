@@ -9,6 +9,9 @@ TagManager:
   - Projectile
   - Enemy
   - Damaged Wall
+  - Game Manager
+  - Exit
+  - Open Exit
   layers:
   - Default
   - TransparentFX
