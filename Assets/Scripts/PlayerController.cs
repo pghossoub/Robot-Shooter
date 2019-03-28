@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject mainCamera;
 	public GameObject legs;
 	public GameObject deathExplosion;
-
+	public float restartLevelDelay = 1f;
 
 	private Animator animatorLegs;
 	private Rigidbody2D rb;
@@ -43,7 +44,6 @@ public class PlayerController : MonoBehaviour {
 
 			Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
 
-			//Move with rigid.AddForce
 			rb.AddForce(movement * speed);
 			animatorLegs.SetTrigger ("Walk");
 		}
@@ -62,15 +62,14 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.tag == "Open Exit") {
 			Debug.Log("Next Level!");
-			//Invoke ("Restart", restartLevelDelay);
-			//enabled = false;
+			enabled = false;
+			Restart();
 		}
 	}
 
 	IEnumerator blink()
 	{
 		isBlinking = true;
-		//float nbBlink = blinkDuration / blinkTime;
 		int locNbBlink = (int)nbBlink;
 
 		while (locNbBlink > 0f) {
@@ -105,5 +104,10 @@ public class PlayerController : MonoBehaviour {
 				StartCoroutine (blink ());
 			}
 		}
+	}
+
+	private void Restart()
+	{
+		SceneManager.LoadScene (0);
 	}
 }

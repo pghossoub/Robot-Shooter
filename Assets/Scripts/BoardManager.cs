@@ -30,13 +30,16 @@ public class BoardManager : MonoBehaviour {
 	public GameObject[] wallTiles;
 	public GameObject[] enemyTiles;
 	public GameObject exitTile;
+	public GameObject player;
+	public float characterStartDelay = 2f;
 
-	public int nbEnemy;
+	[HideInInspector] public int nbEnemy;
 
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3> ();
 	private int rows;
 	private int columns;
+
 
 	void InitialiseList()
 	{
@@ -93,6 +96,13 @@ public class BoardManager : MonoBehaviour {
 		return Instantiate (tile, Vector3.Scale(position, gridFactor), rotation);
 	}
 
+
+	void SetupCharacters()
+	{
+		nbEnemy = LayoutObjectAtRandom (enemyTiles, enemyCount.minimum, enemyCount.maximum);
+		player.SetActive(true);
+	}
+
 	public void SetupScene()
 	{
 		rows = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
@@ -102,11 +112,13 @@ public class BoardManager : MonoBehaviour {
 		BoardSetup ();
 		InitialiseList ();
 		LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
-		nbEnemy = LayoutObjectAtRandom (enemyTiles, enemyCount.minimum, enemyCount.maximum);
+		Invoke("SetupCharacters", characterStartDelay);
+
 
 		//int enemyCount = (int)Mathf.Log (level, 2f);
 		//LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
 		//Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 		//InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 	}
+
 }
