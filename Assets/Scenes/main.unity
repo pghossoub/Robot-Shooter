@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 1133458087687930, guid: 0a7b4123c8c94954e9fb9ba2b69ece07, type: 2}
   exitTile: {fileID: 1328004390199082, guid: 774af6f1e4c87db4b918c6504eb32363, type: 2}
   player: {fileID: 719054262}
+  characterStartDelay: 2
   nbEnemy: 0
 --- !u!4 &36754210
 Transform:
@@ -711,10 +712,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095c5de213795934a9af631b76fef8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardManagerObject: {fileID: 36754208}
   openExit: {fileID: 1944005654033382, guid: 6c951fd85cc03144580b59155c70a321, type: 2}
   levelStartDelay: 2
-  levelImage: {fileID: 847268461}
+  playerPv: 3
   doingSetup: 1
 --- !u!4 &2147337757
 Transform:

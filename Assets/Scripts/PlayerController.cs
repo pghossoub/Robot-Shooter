@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 
 		nbBlink = blinkDuration / blinkTime;
 		isBlinking = false;
+		pv = GameManager.instance.playerPv;
 	}
 
 	void FixedUpdate()
@@ -67,6 +68,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	private void OnDisable()
+	{
+		GameManager.instance.playerPv = pv;
+	}
+
 	IEnumerator blink()
 	{
 		isBlinking = true;
@@ -99,7 +105,8 @@ public class PlayerController : MonoBehaviour {
 
 			if (pv <= 0) {
 				Instantiate (deathExplosion, tr.position, tr.rotation);
-				Destroy (gameObject);
+				GameManager.instance.GameOver();
+
 			} else {
 				StartCoroutine (blink ());
 			}

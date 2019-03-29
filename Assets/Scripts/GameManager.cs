@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject openExit;
 	public float levelStartDelay = 2f;
 	public static GameManager instance = null;
+	public float playerPv;
+	public float playerDieDelay = 2f;
+	//float timeLeft = 30.0f;
 
 	[HideInInspector] public bool doingSetup = true;
 
@@ -19,6 +22,11 @@ public class GameManager : MonoBehaviour {
 	private int level = 0;
 	private GameObject levelImage;
 	private Text levelText;
+	private GameObject[] listEnemy;
+	private GameObject player;
+	private GameObject mainCamera;
+
+
 
 	void Awake () 
 	{
@@ -28,9 +36,17 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 
 		DontDestroyOnLoad (gameObject);
-		//boardScript.SetupScene ();
 	}
-
+	/*
+	void Update()
+	{
+		timeLeft -= Time.deltaTime;
+		if(timeLeft < 0)
+		{
+			GameOver();
+		}
+	}
+	*/
 	//This is called each time a scene is loaded.
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
@@ -73,6 +89,8 @@ public class GameManager : MonoBehaviour {
 
 	public void RemoveEnemy()
 	{
+		//here timer gain!
+
 		boardScript.nbEnemy--;
 	}
 
@@ -87,5 +105,29 @@ public class GameManager : MonoBehaviour {
 		Debug.Log("Exit Opened");
 		exit = GameObject.FindWithTag("Exit");
 		Instantiate (openExit, exit.transform.position, exit.transform.rotation);
+	}
+
+	public void GameOver()
+	{
+		player = GameObject.FindGameObjectWithTag("Player");
+		Destroy (player);
+
+		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+		mainCamera.GetComponent<CameraController> ().enabled = false;
+
+		Invoke ("deathScreen", playerDieDelay);
+	}
+
+	public void deathScreen()
+	{
+		levelText.text = "You died at level " + level + ".";
+		levelImage.SetActive (true);
+
+		listEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach (GameObject enemy in listEnemy) {
+			Destroy(enemy);
+		}
+
+		enabled = false;
 	}
 }

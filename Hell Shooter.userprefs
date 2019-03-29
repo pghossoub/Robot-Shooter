@@ -8,10 +8,10 @@
       <File FileName="Assets\Scripts\WeaponController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EnemyBullet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="58" Column="79" NotebookId="1" />
-      <File FileName="Assets\Scripts\BoardManager.cs" Line="115" Column="50" NotebookId="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="65" Column="20" NotebookId="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="34" Column="55" NotebookId="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="16" Column="4" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="57" Column="4" NotebookId="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="107" Column="39" NotebookId="1" />
+      <File FileName="Assets\Scripts\BoardManager.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Assets\Scripts\PlayerBullet.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
