@@ -783,6 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: 4
+  timeGain: 7
   speed: 1
   fireRate: 1
   waitTime: 2

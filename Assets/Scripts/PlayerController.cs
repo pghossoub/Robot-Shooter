@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour {
 
 	public GameObject mainCamera;
 	public GameObject legs;
-	public GameObject deathExplosion;
 	public float restartLevelDelay = 1f;
 
 	private Animator animatorLegs;
@@ -104,7 +103,7 @@ public class PlayerController : MonoBehaviour {
 			pv = pv - damage;
 
 			if (pv <= 0) {
-				Instantiate (deathExplosion, tr.position, tr.rotation);
+				//Instantiate (deathExplosion, tr.position, tr.rotation);
 				GameManager.instance.GameOver();
 
 			} else {

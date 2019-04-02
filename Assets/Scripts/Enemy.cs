@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
 	public float pv;
+	public float timeGain;
 	public float speed;
 	public float fireRate; //seconds
 	public float waitTime;
@@ -86,7 +87,7 @@ public class Enemy : MonoBehaviour {
 
 		if (pv <= 0) {
 			Instantiate (deathExplosion, tr.position, tr.rotation);
-			gameManager.RemoveEnemy ();
+			gameManager.RemoveEnemy (timeGain);
 
 			if (gameManager.CheckNoEnemyLeft ()) {
 				gameManager.OpenExit ();

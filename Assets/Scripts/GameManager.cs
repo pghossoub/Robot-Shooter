@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour {
 
 	//public GameObject boardManagerObject;
 	public GameObject openExit;
+	public GameObject playerDeathExplosion;
 	public float levelStartDelay = 2f;
 	public static GameManager instance = null;
 	public float playerPv;
 	public float playerDieDelay = 2f;
-	//float timeLeft = 30.0f;
+	public float timer = 30.0f;
 
 	[HideInInspector] public bool doingSetup = true;
 
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour {
 	private GameObject[] listEnemy;
 	private GameObject player;
 	private GameObject mainCamera;
-
+	private bool gameOver = false;
 
 
 	void Awake () 
@@ -37,16 +38,27 @@ public class GameManager : MonoBehaviour {
 
 		DontDestroyOnLoad (gameObject);
 	}
-	/*
-	void Update()
+
+	void Start()
 	{
-		timeLeft -= Time.deltaTime;
-		if(timeLeft < 0)
-		{
-			GameOver();
+		StartCoroutine (CountDown());
+	}
+
+	IEnumerator CountDown()
+	{
+		while(true){
+			Debug.Log ("Timer: " + timer);
+			if (!gameOver && !doingSetup) {
+				timer -= Time.deltaTime;
+				if (timer < 0) {
+					GameOver ();
+					break;
+				}
+			}
+			yield return null;
 		}
 	}
-	*/
+
 	//This is called each time a scene is loaded.
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
@@ -87,9 +99,9 @@ public class GameManager : MonoBehaviour {
 		doingSetup = false;
 	}
 
-	public void RemoveEnemy()
+	public void RemoveEnemy(float timeGain)
 	{
-		//here timer gain!
+		timer += timeGain;
 
 		boardScript.nbEnemy--;
 	}
@@ -105,11 +117,14 @@ public class GameManager : MonoBehaviour {
 		Debug.Log("Exit Opened");
 		exit = GameObject.FindWithTag("Exit");
 		Instantiate (openExit, exit.transform.position, exit.transform.rotation);
+		exit.SetActive(false);
 	}
 
 	public void GameOver()
 	{
+		gameOver = true;
 		player = GameObject.FindGameObjectWithTag("Player");
+		Instantiate (playerDeathExplosion, player.transform.position, player.transform.rotation);
 		Destroy (player);
 
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
