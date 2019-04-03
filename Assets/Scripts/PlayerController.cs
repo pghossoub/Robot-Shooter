@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Transform tr;
 	private SpriteRenderer[] sr;
+	private GameObject heart;
 
 	private bool isBlinking;
 
@@ -101,9 +102,10 @@ public class PlayerController : MonoBehaviour {
 			
 			Instantiate(impact, tr.position, tr.rotation);
 			pv = pv - damage;
+			heart = GameObject.FindWithTag("Heart");
+			heart.SetActive (false);
 
 			if (pv <= 0) {
-				//Instantiate (deathExplosion, tr.position, tr.rotation);
 				GameManager.instance.GameOver();
 
 			} else {

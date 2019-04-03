@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	//public GameObject boardManagerObject;
+	public GameObject countdown;
 	public GameObject openExit;
 	public GameObject playerDeathExplosion;
 	public float levelStartDelay = 2f;
@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour {
 	private GameObject player;
 	private GameObject mainCamera;
 	private bool gameOver = false;
+	private Text countdownText;
+	private GameObject lifeDisplay;
+	private GameObject heart;
 
 
 	void Awake () 
@@ -47,16 +50,25 @@ public class GameManager : MonoBehaviour {
 	IEnumerator CountDown()
 	{
 		while(true){
-			Debug.Log ("Timer: " + timer);
 			if (!gameOver && !doingSetup) {
 				timer -= Time.deltaTime;
-				if (timer < 0) {
+				displayTimer ();
+				if (timer <= 0) {
+					countdownText.text = "0:00";
 					GameOver ();
 					break;
 				}
 			}
 			yield return null;
 		}
+	}
+
+	void displayTimer()
+	{
+		int minutes = Mathf.FloorToInt(timer / 60F);
+		int seconds = Mathf.FloorToInt(timer - minutes * 60);
+		string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+		countdownText.text = niceTime;
 	}
 
 	//This is called each time a scene is loaded.
@@ -83,13 +95,24 @@ public class GameManager : MonoBehaviour {
 
 	void InitGame()
 	{
-		boardScript = GameObject.Find("BoardManager").GetComponent<BoardManager> ();
 		doingSetup = true;
+
+		lifeDisplay = GameObject.Find("PlayerLife");
+		heart = GameObject.Find("Heart");
+		for(int i = 0; i < playerPv - 1; i++){
+			Instantiate(heart, lifeDisplay.transform);
+		}
+
+		countdownText = GameObject.Find("Countdown").GetComponentInChildren<Text> ();
+		displayTimer ();
+
 		levelImage = GameObject.Find("LevelImage");
 		levelImage.SetActive (true);
 		levelText = levelImage.GetComponentInChildren<Text> ();
 		levelText.text = "Level " + level;
 		Invoke ("HideLevelImage", levelStartDelay);
+
+		boardScript = GameObject.Find("BoardManager").GetComponent<BoardManager> ();
 		boardScript.SetupScene();
 	}
 
@@ -108,7 +131,6 @@ public class GameManager : MonoBehaviour {
 
 	public bool CheckNoEnemyLeft()
 	{
-		Debug.Log("Enemy left= " + boardScript.nbEnemy);
 		return boardScript.nbEnemy <= 0;
 	}
 

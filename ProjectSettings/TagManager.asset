@@ -12,6 +12,7 @@ TagManager:
   - Game Manager
   - Exit
   - Open Exit
+  - Heart
   layers:
   - Default
   - TransparentFX
