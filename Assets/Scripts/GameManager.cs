@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	private Text countdownText;
 	private GameObject lifeDisplay;
 	private GameObject heart;
+	private bool readyToReset = false;
 
 
 	void Awake () 
@@ -47,6 +48,23 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (CountDown());
 	}
 
+	void Update()
+	{
+		if (readyToReset) 
+		{
+			if (Input.GetKeyDown (KeyCode.R)) 
+			{
+				//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+				level = 0;
+				playerPv = 3;
+				timer = 30f;
+				gameOver = false;
+				readyToReset = false;
+				SceneManager.LoadScene (0);
+			}
+		}
+	}
+
 	IEnumerator CountDown()
 	{
 		while(true){
@@ -56,7 +74,7 @@ public class GameManager : MonoBehaviour {
 				if (timer <= 0) {
 					countdownText.text = "0:00";
 					GameOver ();
-					break;
+					//break;
 				}
 			}
 			yield return null;
@@ -113,7 +131,7 @@ public class GameManager : MonoBehaviour {
 		Invoke ("HideLevelImage", levelStartDelay);
 
 		boardScript = GameObject.Find("BoardManager").GetComponent<BoardManager> ();
-		boardScript.SetupScene();
+		boardScript.SetupScene(level);
 	}
 
 	private void HideLevelImage()
@@ -136,7 +154,6 @@ public class GameManager : MonoBehaviour {
 
 	public void OpenExit()
 	{
-		Debug.Log("Exit Opened");
 		exit = GameObject.FindWithTag("Exit");
 		Instantiate (openExit, exit.transform.position, exit.transform.rotation);
 		exit.SetActive(false);
@@ -164,7 +181,6 @@ public class GameManager : MonoBehaviour {
 		foreach (GameObject enemy in listEnemy) {
 			Destroy(enemy);
 		}
-
-		enabled = false;
+		readyToReset = true;
 	}
 }

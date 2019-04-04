@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Open Exit") {
-			Debug.Log("Next Level!");
 			enabled = false;
 			Restart();
 		}

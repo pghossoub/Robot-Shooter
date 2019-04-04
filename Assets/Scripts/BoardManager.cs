@@ -97,13 +97,17 @@ public class BoardManager : MonoBehaviour {
 	}
 
 
-	void SetupCharacters()
+	IEnumerator SetupCharacters(int level)
 	{
-		nbEnemy = LayoutObjectAtRandom (enemyTiles, enemyCount.minimum, enemyCount.maximum);
+		yield return new WaitForSeconds (characterStartDelay);
+		int addEnemy = level / 2;
+		if (addEnemy > 4)
+			addEnemy = 4;
+		nbEnemy = LayoutObjectAtRandom (enemyTiles, enemyCount.minimum + addEnemy, enemyCount.maximum + addEnemy);
 		player.SetActive(true);
 	}
 
-	public void SetupScene()
+	public void SetupScene(int level)
 	{
 		rows = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
 		columns = Random.Range (rangeRows.minimum, rangeRows.maximum + 1);
@@ -112,8 +116,7 @@ public class BoardManager : MonoBehaviour {
 		BoardSetup ();
 		InitialiseList ();
 		LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
-		Invoke("SetupCharacters", characterStartDelay);
-
+		StartCoroutine(SetupCharacters(level));
 
 		//int enemyCount = (int)Mathf.Log (level, 2f);
 		//LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
