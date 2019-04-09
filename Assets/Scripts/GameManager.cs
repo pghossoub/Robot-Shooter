@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+	public GameObject canvas;
 	public GameObject countdown;
 	public GameObject openExit;
 	public GameObject playerDeathExplosion;
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public float playerPv;
 	public float playerDieDelay = 2f;
+	public float restartDelay = 1f;
 	public float timer = 30.0f;
 
 	[HideInInspector] public bool doingSetup = true;
@@ -31,6 +33,9 @@ public class GameManager : MonoBehaviour {
 	private GameObject lifeDisplay;
 	private GameObject heart;
 	private bool readyToReset = false;
+	private GameObject gameOverImage;
+	private Text gameOverText;
+	private GameObject pauseMenu;
 
 
 	void Awake () 
@@ -50,19 +55,11 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
-		if (readyToReset) 
-		{
-			if (Input.GetKeyDown (KeyCode.R)) 
-			{
-				//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-				level = 0;
-				playerPv = 3;
-				timer = 30f;
-				gameOver = false;
-				readyToReset = false;
-				SceneManager.LoadScene (0);
-			}
-		}
+		if (Input.GetButtonDown ("Cancel") && !doingSetup && !gameOver)
+			TogglePause();
+		
+		if (Input.GetKeyDown (KeyCode.R) && readyToReset) 
+			Restart ();
 	}
 
 	IEnumerator CountDown()
@@ -70,7 +67,7 @@ public class GameManager : MonoBehaviour {
 		while(true){
 			if (!gameOver && !doingSetup) {
 				timer -= Time.deltaTime;
-				displayTimer ();
+				DisplayTimer ();
 				if (timer <= 0) {
 					countdownText.text = "0:00";
 					GameOver ();
@@ -81,7 +78,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void displayTimer()
+	void DisplayTimer()
 	{
 		int minutes = Mathf.FloorToInt(timer / 60F);
 		int seconds = Mathf.FloorToInt(timer - minutes * 60);
@@ -117,18 +114,26 @@ public class GameManager : MonoBehaviour {
 
 		lifeDisplay = GameObject.Find("PlayerLife");
 		heart = GameObject.Find("Heart");
+		if (level == 1)
+			playerPv = 3f;
 		for(int i = 0; i < playerPv - 1; i++){
 			Instantiate(heart, lifeDisplay.transform);
 		}
 
 		countdownText = GameObject.Find("Countdown").GetComponentInChildren<Text> ();
-		displayTimer ();
+		DisplayTimer ();
 
 		levelImage = GameObject.Find("LevelImage");
 		levelImage.SetActive (true);
 		levelText = levelImage.GetComponentInChildren<Text> ();
 		levelText.text = "Level " + level;
 		Invoke ("HideLevelImage", levelStartDelay);
+
+		gameOverImage = GameObject.Find("GameOverImage");
+		gameOverImage.SetActive (false);
+
+		pauseMenu = GameObject.Find("Pause");
+		pauseMenu.SetActive (false);
 
 		boardScript = GameObject.Find("BoardManager").GetComponent<BoardManager> ();
 		boardScript.SetupScene(level);
@@ -172,15 +177,47 @@ public class GameManager : MonoBehaviour {
 		Invoke ("deathScreen", playerDieDelay);
 	}
 
-	public void deathScreen()
+	void deathScreen()
 	{
-		levelText.text = "You died at level " + level + ".";
-		levelImage.SetActive (true);
+
+		gameOverImage.SetActive (true);
+		gameOverText = gameOverImage.GetComponentInChildren<Text> ();
+		gameOverText.text = "You died at level " + level + ".";
 
 		listEnemy = GameObject.FindGameObjectsWithTag("Enemy");
 		foreach (GameObject enemy in listEnemy) {
 			Destroy(enemy);
 		}
 		readyToReset = true;
+	}
+
+	public void TogglePause()
+	{
+		if(Time.timeScale == 0f)
+		{
+			Time.timeScale = 1f;
+			pauseMenu.SetActive (false);
+		}
+		else
+		{
+			Time.timeScale = 0f;
+			pauseMenu.SetActive (true);
+		}
+	}
+
+	public void Restart()
+	{
+		level = 0;
+		playerPv = 3f;
+		//Debug.Log ("Pv= " + playerPv);
+		timer = 30f;
+		gameOver = false;
+		readyToReset = false;
+		SceneManager.LoadScene (0);
+	}
+
+	public void Quit()
+	{
+		Application.Quit ();
 	}
 }

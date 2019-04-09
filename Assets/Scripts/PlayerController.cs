@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.tag == "Open Exit") {
 			enabled = false;
-			Restart();
+			NewLevel();
 		}
 	}
 
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void Restart()
+	private void NewLevel()
 	{
 		SceneManager.LoadScene (0);
 	}

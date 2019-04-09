@@ -95,8 +95,7 @@ public class BoardManager : MonoBehaviour {
 	    Vector3 gridFactor= new Vector3 (0.32f, 0.32f, 1f); //Because tiles are 32x32
 		return Instantiate (tile, Vector3.Scale(position, gridFactor), rotation);
 	}
-
-
+		
 	IEnumerator SetupCharacters(int level)
 	{
 		yield return new WaitForSeconds (characterStartDelay);
