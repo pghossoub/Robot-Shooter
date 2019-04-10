@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public float playerDieDelay = 2f;
 	public float restartDelay = 1f;
 	public float timer = 30.0f;
+	public Text scoreText;
 
 	[HideInInspector] public bool doingSetup = true;
 
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour {
 	private GameObject gameOverImage;
 	private Text gameOverText;
 	private GameObject pauseMenu;
+	private float score = 0;
+
 
 
 	void Awake () 
@@ -123,6 +126,9 @@ public class GameManager : MonoBehaviour {
 		countdownText = GameObject.Find("Countdown").GetComponentInChildren<Text> ();
 		DisplayTimer ();
 
+		scoreText = GameObject.Find("Score").GetComponentInChildren<Text> ();
+		scoreText.text  = string.Format("{0}", score);
+
 		levelImage = GameObject.Find("LevelImage");
 		levelImage.SetActive (true);
 		levelText = levelImage.GetComponentInChildren<Text> ();
@@ -145,9 +151,11 @@ public class GameManager : MonoBehaviour {
 		doingSetup = false;
 	}
 
-	public void RemoveEnemy(float timeGain)
+	public void RemoveEnemy(float timeGain, float scorePoints)
 	{
 		timer += timeGain;
+		score += scorePoints;
+		scoreText.text  = string.Format("{0}", score);
 
 		boardScript.nbEnemy--;
 	}
@@ -209,8 +217,8 @@ public class GameManager : MonoBehaviour {
 	{
 		level = 0;
 		playerPv = 3f;
-		//Debug.Log ("Pv= " + playerPv);
 		timer = 30f;
+		score = 0f;
 		gameOver = false;
 		readyToReset = false;
 		SceneManager.LoadScene (0);

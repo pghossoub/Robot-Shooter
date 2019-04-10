@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,8 +13,13 @@ public class PlayerController : MonoBehaviour {
 	public float blinkDuration;
 	private float nbBlink;
 
+	public float dashSpeed;
+	public float dashTime;
+	public float dashRecharge;
+
 	public GameObject mainCamera;
 	public GameObject legs;
+	public GameObject dashChargeDisplay;
 	public float restartLevelDelay = 1f;
 
 	private Animator animatorLegs;
@@ -22,7 +28,11 @@ public class PlayerController : MonoBehaviour {
 	private SpriteRenderer[] sr;
 	private GameObject heart;
 
-	private bool isBlinking;
+	private bool isBlinking = false;
+	private bool isDashingInCharge = false;
+	private AudioSource dashSound;
+	private Text dashChargeDisplayText;
+	private Color dashChargedColor;
 
 	void Start () 
 	{
@@ -30,6 +40,9 @@ public class PlayerController : MonoBehaviour {
 		tr = GetComponent<Transform>();
 		animatorLegs = legs.GetComponent<Animator> ();
 		sr = GetComponentsInChildren<SpriteRenderer> ();
+		dashSound = GetComponent<AudioSource> ();
+		dashChargeDisplayText = dashChargeDisplay.GetComponentInChildren<Text> ();
+		dashChargedColor = dashChargeDisplayText.color;
 
 		nbBlink = blinkDuration / blinkTime;
 		isBlinking = false;
@@ -47,6 +60,9 @@ public class PlayerController : MonoBehaviour {
 
 			rb.AddForce(movement * speed);
 			animatorLegs.SetTrigger ("Walk");
+
+			if (Input.GetButton ("Fire2") && !isDashingInCharge)
+				StartCoroutine (Dash (movement));
 		}
 
 		//Rotation to follow mouse
@@ -70,6 +86,30 @@ public class PlayerController : MonoBehaviour {
 	private void OnDisable()
 	{
 		GameManager.instance.playerPv = pv;
+	}
+
+	IEnumerator Dash(Vector3 movement)
+	{
+		
+		speed = speed * dashSpeed;
+		isDashingInCharge = true;
+		dashSound.Play ();
+		dashChargeDisplayText.color = Color.grey;
+		yield return new WaitForSeconds(dashTime);
+		speed = speed / dashSpeed;
+		yield return new WaitForSeconds (dashRecharge);
+		dashChargeDisplayText.color = dashChargedColor;
+		isDashingInCharge = false;
+
+		/*
+		rb.AddForce(movement * speed * dashSpeed);
+		isDashingInCharge = true;
+		dashSound.Play ();
+		dashChargeDisplayText.color = Color.grey;
+		yield return new WaitForSeconds (dashRecharge);
+		dashChargeDisplayText.color = dashChargedColor;
+		isDashingInCharge = false;
+		*/
 	}
 
 	IEnumerator blink()

@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 
 	public float pv;
 	public float timeGain;
+	public float scorePoints;
 	public float speed;
 	public float fireRate; //seconds
 	public float waitTime;
@@ -71,7 +72,8 @@ public class Enemy : MonoBehaviour {
 
 	IEnumerator Attack ()
 	{
-		yield return new WaitForSeconds (waitTime);
+		float deltaWaitTime = Random.Range (0f, 0.75f);
+		yield return new WaitForSeconds (waitTime + deltaWaitTime);
 
 		while(true)
 		{
@@ -87,7 +89,7 @@ public class Enemy : MonoBehaviour {
 
 		if (pv <= 0) {
 			Instantiate (deathExplosion, tr.position, tr.rotation);
-			gameManager.RemoveEnemy (timeGain);
+			gameManager.RemoveEnemy (timeGain, scorePoints);
 
 			if (gameManager.CheckNoEnemyLeft ()) {
 				gameManager.OpenExit ();
