@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 	private AudioSource dashSound;
 	private Text dashChargeDisplayText;
 	private Color dashChargedColor;
+	private bool isDashing = false;
 
 	void Start () 
 	{
@@ -92,12 +93,24 @@ public class PlayerController : MonoBehaviour {
 	{
 		
 		speed = speed * dashSpeed;
+		isDashing = true;
 		isDashingInCharge = true;
 		dashSound.Play ();
 		dashChargeDisplayText.color = Color.grey;
+		foreach (SpriteRenderer spriteRenderer in sr) {
+			spriteRenderer.color = new Color(1f,1f,1f,0.5f);
+		}
+
 		yield return new WaitForSeconds(dashTime);
+
+		isDashing = false;
 		speed = speed / dashSpeed;
+		foreach (SpriteRenderer spriteRenderer in sr) {
+			spriteRenderer.color = new Color(1f,1f,1f,1f);
+		}
+
 		yield return new WaitForSeconds (dashRecharge);
+
 		dashChargeDisplayText.color = dashChargedColor;
 		isDashingInCharge = false;
 
@@ -137,7 +150,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void LosePv (float damage, GameObject impact)
 	{
-		if (isBlinking == false) {
+		if (isBlinking == false && isDashing == false) {
 			
 			Instantiate(impact, tr.position, tr.rotation);
 			pv = pv - damage;

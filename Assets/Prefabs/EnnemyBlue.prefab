@@ -785,9 +785,10 @@ MonoBehaviour:
   pv: 4
   timeGain: 5
   scorePoints: 10
-  speed: 1
+  speed: 3
   fireRate: 1
   waitTime: 2
+  behaviorDuration: 2
   shot: {fileID: 1483760561716642, guid: 72280a6a71ea79a409a4e6f95b727fc8, type: 2}
   shotSpawn: {fileID: 4581731733451578}
   legs: {fileID: 1371611731789390}

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 	public float speed;
 	public float fireRate; //seconds
 	public float waitTime;
+	public float behaviorDuration;
 	public GameObject shot;
 	public Transform shotSpawn;
 	public GameObject legs;
@@ -22,6 +23,10 @@ public class Enemy : MonoBehaviour {
 	private GameObject player;
 	private Transform trPlayer;
 	private GameManager gameManager;
+
+	private int behavior = 0;
+	private float behaviorTimer = 0.0f;
+	private Vector3 randomMove;
 
 	void Start () 
 	{
@@ -36,7 +41,7 @@ public class Enemy : MonoBehaviour {
 		gameManager = GameObject.FindWithTag("Game Manager").GetComponent<GameManager>();
 
 		//Move
-		StartCoroutine(Move());
+		//StartCoroutine(MoveTest());
 
 		//Attack!
 		StartCoroutine (Attack());
@@ -58,16 +63,42 @@ public class Enemy : MonoBehaviour {
 			//tr.eulerAngles = new Vector3 (0, 0, tr.eulerAngles.z);
 		}
 
+		//time thing
+		behaviorTimer += Time.deltaTime;
+		StartCoroutine(Move());
+
 	}
 
 	IEnumerator Move ()
 	{
-		while (true) 
-		{
-			animatorLegs.SetTrigger ("Walk");
-			rb.AddForce (tr.rotation * Vector3.up * speed);
-			yield return null;
+		Vector3 movement;
+
+
+		if (behavior == 0)
+			movement = Vector3.up;
+		else
+			movement = randomMove;
+		
+		animatorLegs.SetTrigger ("Walk");
+		rb.AddForce (tr.rotation * movement * speed);
+
+		if (behaviorTimer > behaviorDuration) {
+			behaviorTimer = 0.0f;
+			if (behavior == 0) {
+				behavior = 1;
+				randomMove = RandomDirection ();
+			}
+			else
+				behavior = 0;
 		}
+
+		yield return null;
+
+	}
+
+	Vector3 RandomDirection()
+	{
+		return new Vector3 (Random.Range (0f, 1f), Random.Range (0f, 1f), 0);
 	}
 
 	IEnumerator Attack ()
@@ -78,6 +109,7 @@ public class Enemy : MonoBehaviour {
 		while(true)
 		{
 			Instantiate (shot, shotSpawn.position, tr.rotation);
+			//Debug.Log ("rotation = " + tr.rotation);
 			shotSound.Play ();
 			yield return new WaitForSeconds (fireRate);
 		}

@@ -353,7 +353,51 @@ Prefab:
     - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
         type: 2}
       propertyPath: dashSpeed
-      value: 5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732824607882034, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212362085630991860, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212362085630991860, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212362085630991860, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212362085630991860, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212362085630991860, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212240847816698296, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212888318378137486, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062036919162086, guid: 1591cd419ef74c2428d0bd9b213dd5d1,
+        type: 2}
+      propertyPath: dashTime
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1591cd419ef74c2428d0bd9b213dd5d1, type: 2}

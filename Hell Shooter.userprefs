@@ -1,20 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Menu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Mover.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DestroyByTime.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="111" Column="54" />
       <File FileName="Assets\Scripts\WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyBullet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="118" Column="18" />
-      <File FileName="Assets\Menu.cs" Line="17" Column="30" NotebookId="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="221" Column="14" NotebookId="1" />
       <File FileName="Assets\Scripts\BoardManager.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PlayerBullet.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\DamagedWall.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="111" Column="3" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
