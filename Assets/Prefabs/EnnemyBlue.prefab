@@ -779,21 +779,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1133458087687930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9833859b31c491f43854ce2edbd01e80, type: 3}
+  m_Script: {fileID: 11500000, guid: 69ed7d8bd3c061c4aa439ae5c1f9fa94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pv: 4
   timeGain: 5
   scorePoints: 10
   speed: 3
-  fireRate: 1
   waitTime: 2
-  behaviorDuration: 2
-  shot: {fileID: 1483760561716642, guid: 72280a6a71ea79a409a4e6f95b727fc8, type: 2}
-  shotSpawn: {fileID: 4581731733451578}
+  bounceTime: 0.1
   legs: {fileID: 1371611731789390}
   deathExplosion: {fileID: 1746730878426804, guid: 2037de89caf7ec0468719757002d06b4,
     type: 2}
+  fireRate: 1
+  behaviorDuration: 2
+  shot: {fileID: 1483760561716642, guid: 72280a6a71ea79a409a4e6f95b727fc8, type: 2}
+  shotSpawn: {fileID: 4581731733451578}
 --- !u!124 &124951315934617254
 Behaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,7 @@ TagManager:
   - Exit
   - Open Exit
   - Heart
+  - MeleeWeapon
   layers:
   - Default
   - TransparentFX

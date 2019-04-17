@@ -2,35 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public abstract class Enemy : MonoBehaviour {
 
 	public float pv;
 	public float timeGain;
 	public float scorePoints;
 	public float speed;
-	public float fireRate; //seconds
+	//public float fireRate; //seconds
 	public float waitTime;
-	public float behaviorDuration;
-	public GameObject shot;
-	public Transform shotSpawn;
+	public float bounceTime;
+	//public float behaviorDuration;
+	//public GameObject shot;
+	//public Transform shotSpawn;
 	public GameObject legs;
 	public GameObject deathExplosion;
 
-	private Animator animatorLegs;
-	private AudioSource shotSound;
-	private Transform tr;
-	private Rigidbody2D rb;
+	protected Animator animatorLegs;
+	//private AudioSource shotSound;
+	protected Transform tr;
+	protected Rigidbody2D rb;
 	private GameObject player;
 	private Transform trPlayer;
 	private GameManager gameManager;
+	protected bool isBouncing = false;
 
-	private int behavior = 0;
-	private float behaviorTimer = 0.0f;
-	private Vector3 randomMove;
+	//private int behavior = 0;
+	//private float behaviorTimer = 0.0f;
+	//private Vector3 randomMove;
 
-	void Start () 
+	protected virtual void Start () 
 	{
-		shotSound = GetComponent<AudioSource> ();
+		//shotSound = GetComponent<AudioSource> ();
 		tr = GetComponent<Transform> ();
 		rb = GetComponent<Rigidbody2D> ();
 		animatorLegs = legs.GetComponent<Animator> ();
@@ -44,10 +46,11 @@ public class Enemy : MonoBehaviour {
 		//StartCoroutine(MoveTest());
 
 		//Attack!
-		StartCoroutine (Attack());
+		//StartCoroutine (Attack());
+
 	}
 
-	void Update()
+	protected virtual void Update()
 	{
 		//Aim Player
 
@@ -62,13 +65,9 @@ public class Enemy : MonoBehaviour {
 			tr.rotation = Quaternion.Slerp(tr.rotation, lookRotation, 1f);
 			//tr.eulerAngles = new Vector3 (0, 0, tr.eulerAngles.z);
 		}
-
-		//time thing
-		behaviorTimer += Time.deltaTime;
-		StartCoroutine(Move());
-
 	}
 
+	/*
 	IEnumerator Move ()
 	{
 		Vector3 movement;
@@ -95,11 +94,16 @@ public class Enemy : MonoBehaviour {
 		yield return null;
 
 	}
+	*/
 
+	/*
 	Vector3 RandomDirection()
 	{
 		return new Vector3 (Random.Range (0f, 1f), Random.Range (0f, 1f), 0);
 	}
+	*/
+
+	/*
 
 	IEnumerator Attack ()
 	{
@@ -114,6 +118,7 @@ public class Enemy : MonoBehaviour {
 			yield return new WaitForSeconds (fireRate);
 		}
 	}
+	*/
 
 	public void LosePv (float damage)
 	{
@@ -131,10 +136,19 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void bounceOnImpact(Transform bulletTransform)
+	public void bounceOnImpact(Transform hit, Vector3 direction)
 	{
-		Vector3 movement = bulletTransform.rotation * Vector3.up;
-		rb.AddForce(movement * 100);
+		if(!isBouncing)
+			StartCoroutine (bounce(hit, direction));	
+	}
+
+	IEnumerator bounce(Transform hit, Vector3 direction)
+	{
+		isBouncing = true;
+		Vector3 movement = hit.rotation * direction;
+		rb.AddForce (movement * 100);
+		yield return new WaitForSeconds (bounceTime);
+		isBouncing = false;
 	}
 }
 	

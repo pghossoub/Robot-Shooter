@@ -20,7 +20,7 @@ public abstract class Projectile : MonoBehaviour {
 		if(other.CompareTag("Damaged Wall"))
 			other.GetComponent<DamagedWall>().DamageWall(1);
 
-		if(!other.CompareTag("Projectile"))
-		Destroy(gameObject);
+		if(!other.CompareTag("Projectile") && !other.CompareTag("MeleeWeapon"))
+			Destroy(gameObject);
 	}
 }
