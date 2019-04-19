@@ -18,6 +18,7 @@ public class Zombie : Enemy {
 
 		zombieSound = GetComponent<AudioSource> ();
 
+		StartCoroutine (Move ());
 		StartCoroutine (ZombieDash ());
 	}
 
@@ -26,15 +27,21 @@ public class Zombie : Enemy {
 		if (!zombieDashing)
 			base.Update();
 		
-		if(!isBouncing)
-			StartCoroutine(Move());
+		//if(!isBouncing)
+		//	StartCoroutine(Move());
 	}
 
 	IEnumerator Move ()
 	{
-		animatorLegs.SetTrigger ("Walk");
-		rb.AddForce (tr.rotation * Vector3.up * speed);
-		yield return null;
+		yield return new WaitForSeconds (waitTime);
+
+		while (true) {
+			if (!isBouncing) {
+				animatorLegs.SetTrigger ("Walk");
+				rb.AddForce (tr.rotation * Vector3.up * speed);
+			}
+			yield return null;
+		}
 	}
 
 	IEnumerator ZombieDash()
@@ -44,10 +51,10 @@ public class Zombie : Enemy {
 
 		while (true) {
 			zombieSound.Play();
-			speed = speed * 3;
+			speed = speed * 4;
 			zombieDashing = true;
 			yield return new WaitForSeconds (zombieDashTime);
-			speed = speed / 3;
+			speed = speed / 4;
 			zombieDashing = false;
 			yield return new WaitForSeconds (dashRate);
 		}
