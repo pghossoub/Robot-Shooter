@@ -5,6 +5,9 @@ using UnityEngine;
 public class RangedEnemy : Enemy {
 
 	public float behaviorDuration;
+	public float fireRate;
+	public GameObject shot;
+	public Transform shotSpawn;
 
 	private int behavior = 0;
 	private float behaviorTimer = 0.0f;
@@ -17,13 +20,14 @@ public class RangedEnemy : Enemy {
 		base.Start ();
 
 		shotSound = GetComponent<AudioSource> ();
+
+		StartCoroutine(Attack());
 	}
 
 	protected override void Update () {
 		
 		base.Update ();
 
-		//time thing
 		behaviorTimer += Time.deltaTime;
 		if(!isBouncing)
 			StartCoroutine(Move());
@@ -57,5 +61,23 @@ public class RangedEnemy : Enemy {
 	protected Vector3 RandomDirection()
 	{
 		return new Vector3 (Random.Range (0f, 1f), Random.Range (0f, 1f), 0);
+	}
+
+	protected IEnumerator Attack()
+	{
+
+		float deltaWaitTime = Random.Range (0f, 0.75f);
+		yield return new WaitForSeconds (waitTime + deltaWaitTime);
+
+		StartCoroutine (Shoot ());
+	}
+
+	protected virtual IEnumerator Shoot()
+	{
+		while (true) {
+			Instantiate (shot, shotSpawn.position, tr.rotation);
+			shotSound.Play ();
+			yield return new WaitForSeconds (fireRate);
+		}
 	}
 }

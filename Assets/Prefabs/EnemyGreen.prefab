@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 58021232842828124}
   - component: {fileID: 212008665117399344}
   - component: {fileID: 82082695066650606}
+  - component: {fileID: 114698639957469632}
   m_Layer: 0
   m_Name: EnemyGreen
   m_TagString: Enemy
@@ -770,6 +771,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114698639957469632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261584959224570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5706ea58ce0ce754ba74e3a75beb3623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pv: 4
+  timeGain: 5
+  scorePoints: 10
+  speed: 3
+  waitTime: 2
+  bounceTime: 0.1
+  legs: {fileID: 1510960124402458}
+  deathExplosion: {fileID: 1746730878426804, guid: 2037de89caf7ec0468719757002d06b4,
+    type: 2}
+  behaviorDuration: 2
+  fireRate: 1
+  shot: {fileID: 1483760561716642, guid: 72280a6a71ea79a409a4e6f95b727fc8, type: 2}
+  shotSpawn: {fileID: 4089264669347288}
+  shotWidth: 30
 --- !u!124 &124938780149231962
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1137,7 +1163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 400
-  m_Sprite: {fileID: 21300010, guid: ea2a3052c3a54c64293183746854fcf3, type: 3}
+  m_Sprite: {fileID: 21300010, guid: c83098068039b684e9d12a495d13204f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1260,7 +1286,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 400
-  m_Sprite: {fileID: 21300010, guid: ea2a3052c3a54c64293183746854fcf3, type: 3}
+  m_Sprite: {fileID: 21300010, guid: c83098068039b684e9d12a495d13204f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

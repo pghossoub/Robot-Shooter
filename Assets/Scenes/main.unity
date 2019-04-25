@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 1355229675080744, guid: cc30c43e9c9f68d4d8d103e20ba19d81, type: 2}
   enemyTiles:
   - {fileID: 1133458087687930, guid: 0a7b4123c8c94954e9fb9ba2b69ece07, type: 2}
+  - {fileID: 1261584959224570, guid: b5904a2bf825ed84a8832e1d311b86bc, type: 2}
   - {fileID: 1409374162823862, guid: 478b8f97dac23a7438883b99935bf572, type: 2}
   exitTile: {fileID: 1328004390199082, guid: 774af6f1e4c87db4b918c6504eb32363, type: 2}
   player: {fileID: 719054262}
