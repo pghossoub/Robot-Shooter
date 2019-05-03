@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RangedEnemy : Enemy {
 
@@ -14,6 +15,7 @@ public class RangedEnemy : Enemy {
 	private Vector3 randomMove;
 
 	protected AudioSource shotSound;
+	protected bool isDashing = false;
 
 	protected override void Start ()
 	{
@@ -24,12 +26,13 @@ public class RangedEnemy : Enemy {
 		StartCoroutine(Attack());
 	}
 
-	protected override void Update () {
-		
-		base.Update ();
-
+	//protected override void Update () {
+	protected virtual void FixedUpdate () {	
+		//base.Update ();
+		//Debug.Log("isDashing = " + isDashing);//true
 		behaviorTimer += Time.deltaTime;
-		if(!isBouncing)
+		if(!isBouncing && !isDashing)
+			//base.Update ();
 			StartCoroutine(Move());
 	}
 
@@ -60,13 +63,15 @@ public class RangedEnemy : Enemy {
 
 	protected Vector3 RandomDirection()
 	{
-		return new Vector3 (Random.Range (0f, 1f), Random.Range (0f, 1f), 0);
+		float x = UnityEngine.Random.Range (0f, 1f);
+		double y = Math.Sqrt (1 - (x*x));
+		return new Vector3 (x, (float)y, 0);
 	}
 
 	protected IEnumerator Attack()
 	{
 
-		float deltaWaitTime = Random.Range (0f, 0.75f);
+		float deltaWaitTime = UnityEngine.Random.Range (0f, 0.75f);
 		yield return new WaitForSeconds (waitTime + deltaWaitTime);
 
 		StartCoroutine (Shoot ());

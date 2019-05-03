@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BoardManager.cs">
     <Files>
       <File FileName="Assets\Scripts\EnemyBullet.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlayerBullet.cs" Line="1" Column="1" />
@@ -8,14 +8,14 @@
       <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DamagedWall.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MeleeWeapon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Zombie.cs" Line="50" Column="21" />
-      <File FileName="Assets\Scripts\RangedEnemy.cs" Line="8" Column="24" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="19" Column="20" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="21" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\EnemyBlue.cs" Line="9" Column="17" NotebookId="1" />
-      <File FileName="Assets\Scripts\EnemyGreen.cs" Line="8" Column="2" NotebookId="1" />
-      <File FileName="Assets\Scripts\BoardManager.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="171" Column="34" NotebookId="1" />
+      <File FileName="Assets\Scripts\Zombie.cs" Line="20" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="62" Column="22" />
+      <File FileName="Assets\Scripts\RangedEnemy.cs" Line="30" Column="20" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyBlue.cs" Line="35" Column="58" NotebookId="1" />
+      <File FileName="Assets\Scripts\EnemyGreen.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\BoardManager.cs" Line="95" Column="44" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

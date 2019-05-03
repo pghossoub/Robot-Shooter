@@ -261,16 +261,18 @@ MonoBehaviour:
     minimum: 2
     maximum: 3
   floorTiles:
+  - {fileID: 1566294467105048, guid: dcd50981f9382d24e9ba7cb7e197d969, type: 2}
   - {fileID: 1825532200100670, guid: 522c4b2e994b48c4c9e2fb83d342adeb, type: 2}
+  - {fileID: 1231973296300262, guid: 19ff00ba69461cf4ca75e0db5a50b11b, type: 2}
   outerWallTiles:
   - {fileID: 1310702317676912, guid: 65b623b6f4e25d449ac7a967527fb1db, type: 2}
   wallTiles:
   - {fileID: 1310586492755324, guid: 707f6170b3e89eb4285118c7ff40b610, type: 2}
   - {fileID: 1355229675080744, guid: cc30c43e9c9f68d4d8d103e20ba19d81, type: 2}
   enemyTiles:
+  - {fileID: 1409374162823862, guid: 478b8f97dac23a7438883b99935bf572, type: 2}
   - {fileID: 1133458087687930, guid: 0a7b4123c8c94954e9fb9ba2b69ece07, type: 2}
   - {fileID: 1261584959224570, guid: b5904a2bf825ed84a8832e1d311b86bc, type: 2}
-  - {fileID: 1409374162823862, guid: 478b8f97dac23a7438883b99935bf572, type: 2}
   exitTile: {fileID: 1328004390199082, guid: 774af6f1e4c87db4b918c6504eb32363, type: 2}
   player: {fileID: 719054262}
   characterStartDelay: 2
@@ -1667,7 +1669,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

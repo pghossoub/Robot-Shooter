@@ -783,8 +783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: 4
-  timeGain: 5
-  scorePoints: 10
+  timeGain: 7
+  scorePoints: 15
   speed: 3
   waitTime: 2
   bounceTime: 0.1
@@ -793,7 +793,7 @@ MonoBehaviour:
     type: 2}
   behaviorDuration: 2
   fireRate: 1
-  shot: {fileID: 1483760561716642, guid: 72280a6a71ea79a409a4e6f95b727fc8, type: 2}
+  shot: {fileID: 1740128298387348, guid: 8fabbf72d4b7ace468cbab07cf6bb123, type: 2}
   shotSpawn: {fileID: 4089264669347288}
   shotWidth: 30
 --- !u!124 &124938780149231962

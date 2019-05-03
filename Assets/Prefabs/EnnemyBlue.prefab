@@ -791,10 +791,13 @@ MonoBehaviour:
   legs: {fileID: 1371611731789390}
   deathExplosion: {fileID: 1746730878426804, guid: 2037de89caf7ec0468719757002d06b4,
     type: 2}
-  fireRate: 1
   behaviorDuration: 2
+  fireRate: 1
   shot: {fileID: 1483760561716642, guid: 72280a6a71ea79a409a4e6f95b727fc8, type: 2}
   shotSpawn: {fileID: 4581731733451578}
+  dashSpeed: 250
+  dashWait: 2
+  dashDuration: 0.3
 --- !u!124 &124951315934617254
 Behaviour:
   m_ObjectHideFlags: 1
