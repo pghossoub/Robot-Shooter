@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour {
 
-	public float fireRate; //seconds
+	public float fireRate;
 	public GameObject shot;
 	public Transform shotSpawn;
 
-	//private because component attached to weapon
-	//private AudioSource shotSound;
 	private float nextFire;
 	private AudioSource shotSound;
 

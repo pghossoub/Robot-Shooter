@@ -47,9 +47,11 @@ public class Zombie : Enemy {
 
 		while (true) {
 			zombieSound.Play();
+
 			speed = speed * 4;
 			zombieDashing = true;
 			yield return new WaitForSeconds (zombieDashTime);
+
 			speed = speed / 4;
 			zombieDashing = false;
 			yield return new WaitForSeconds (dashRate);

@@ -8,31 +8,27 @@ public class PlayerController : MonoBehaviour {
 
 	public float pv;
 	public float speed;
-
 	public float blinkTime;
 	public float blinkDuration;
-	private float nbBlink;
-
 	public float dashSpeed;
 	public float dashTime;
 	public float dashRecharge;
-
 	public GameObject mainCamera;
 	public GameObject legs;
 	public GameObject dashChargeDisplay;
 	public float restartLevelDelay = 1f;
 
 	private Animator animatorLegs;
+	private float nbBlink;
 	private Rigidbody2D rb;
 	private Transform tr;
 	private SpriteRenderer[] sr;
 	private GameObject heart;
-
-	private bool isBlinking = false;
-	private bool isDashingInCharge = false;
 	private AudioSource dashSound;
 	private Text dashChargeDisplayText;
 	private Color dashChargedColor;
+	private bool isBlinking = false;
+	private bool isDashingInCharge = false;
 	private bool isDashing = false;
 
 	void Start () 
@@ -71,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 		Quaternion PlayerRotation = Quaternion.LookRotation (tr.position - mousePosition, Vector3.forward);
 		tr.rotation = PlayerRotation;
 
-		//negate 3D rotation //no need in orthographic ?
+		//negate 3D rotation //not needed for orthographic camera
 		transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
 		rb.angularVelocity = 0;
 	}
@@ -113,19 +109,9 @@ public class PlayerController : MonoBehaviour {
 
 		dashChargeDisplayText.color = dashChargedColor;
 		isDashingInCharge = false;
-
-		/*
-		rb.AddForce(movement * speed * dashSpeed);
-		isDashingInCharge = true;
-		dashSound.Play ();
-		dashChargeDisplayText.color = Color.grey;
-		yield return new WaitForSeconds (dashRecharge);
-		dashChargeDisplayText.color = dashChargedColor;
-		isDashingInCharge = false;
-		*/
 	}
 
-	IEnumerator blink()
+	IEnumerator Blink()
 	{
 		isBlinking = true;
 		int locNbBlink = (int)nbBlink;
@@ -133,15 +119,12 @@ public class PlayerController : MonoBehaviour {
 		while (locNbBlink > 0f) {
 			locNbBlink -= 1;
 
-			//toggle renderer
 			foreach (SpriteRenderer spriteRenderer in sr) {
 				spriteRenderer.enabled = !spriteRenderer.enabled;
 			}
-			//wait for a bit
 			yield return new WaitForSeconds(blinkTime);
 		}
 
-		//make sure renderer is enabled when we exit
 		foreach (SpriteRenderer spriteRenderer in sr) {
 			spriteRenderer.enabled = true;
 		}
@@ -161,7 +144,7 @@ public class PlayerController : MonoBehaviour {
 				GameManager.instance.GameOver();
 
 			} else {
-				StartCoroutine (blink ());
+				StartCoroutine (Blink ());
 			}
 		}
 	}

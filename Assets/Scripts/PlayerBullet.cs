@@ -9,7 +9,7 @@ public class PlayerBullet : Projectile {
 		if(other.CompareTag("Enemy")){
 			Instantiate(impact, tr.position, tr.rotation);
 			other.GetComponent<Enemy>().LosePv(damage);
-			other.GetComponent<Enemy>().bounceOnImpact(tr, Vector3.up);
+			other.GetComponent<Enemy>().BounceOnImpact(tr, Vector3.up);
 		}
 
 		base.OnTriggerEnter2D(other);

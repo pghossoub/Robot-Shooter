@@ -8,9 +8,11 @@ public class Menu : MonoBehaviour {
 	public Button resume;
 	public Button restart;
 	public Button quit;
+
 	private GameManager gameManager;
 
-	void Start () {
+	void Start () 
+	{
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		resume.onClick.AddListener (gameManager.TogglePause);
 		restart.onClick.AddListener (gameManager.TogglePause);

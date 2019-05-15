@@ -33,7 +33,6 @@ public abstract class Enemy : MonoBehaviour {
 		trPlayer = player.GetComponent<Transform> ();
 
 		gameManager = GameObject.FindWithTag("Game Manager").GetComponent<GameManager>();
-
 	}
 
 	protected virtual void Update()
@@ -49,7 +48,6 @@ public abstract class Enemy : MonoBehaviour {
 			lookRotation.x = 0;
 			lookRotation.y = 0;
 			tr.rotation = Quaternion.Slerp(tr.rotation, lookRotation, 1f);
-			//tr.eulerAngles = new Vector3 (0, 0, tr.eulerAngles.z);
 		}
 	}
 
@@ -69,13 +67,13 @@ public abstract class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void bounceOnImpact(Transform hit, Vector3 direction)
+	public void BounceOnImpact(Transform hit, Vector3 direction)
 	{
 		if(!isBouncing)
-			StartCoroutine (bounce(hit, direction));	
+			StartCoroutine (Bounce(hit, direction));	
 	}
 
-	IEnumerator bounce(Transform hit, Vector3 direction)
+	IEnumerator Bounce(Transform hit, Vector3 direction)
 	{
 		isBouncing = true;
 		Vector3 movement = hit.rotation * direction;

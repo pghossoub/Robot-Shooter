@@ -13,10 +13,9 @@ public class MeleeWeapon : MonoBehaviour {
 		if (other.CompareTag ("Player")) 
 			other.GetComponent<PlayerController> ().LosePv (damage, impact);
 		
-
 		if (other.CompareTag ("Damaged Wall")) {
 			other.GetComponent<DamagedWall> ().DamageWall (1);
-			GetComponentInParent<Enemy> ().bounceOnImpact (transform, Vector3.down);
+			GetComponentInParent<Enemy> ().BounceOnImpact (transform, Vector3.down);
 		}
 	}
 }

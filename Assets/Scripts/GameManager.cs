@@ -39,8 +39,6 @@ public class GameManager : MonoBehaviour {
 	private GameObject pauseMenu;
 	private float score = 0;
 
-
-
 	void Awake () 
 	{
 		if (instance == null)
@@ -74,7 +72,6 @@ public class GameManager : MonoBehaviour {
 				if (timer <= 0) {
 					countdownText.text = "0:00";
 					GameOver ();
-					//break;
 				}
 			}
 			yield return null;
@@ -92,9 +89,7 @@ public class GameManager : MonoBehaviour {
 	//This is called each time a scene is loaded.
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
-		//Add one to our level number.
 		level++;
-		//Call InitGame to initialize our level.
 		InitGame();
 	}
 
@@ -107,7 +102,6 @@ public class GameManager : MonoBehaviour {
 	void OnDisable()
 	{
 		//Tell our ‘OnLevelFinishedLoading’ function to stop listening for a scene change event as soon as this script is disabled. 
-		//Remember to always have an unsubscription for every delegate you subscribe to!
 		SceneManager.sceneLoaded -= OnLevelFinishedLoading;
 	}
 
@@ -131,6 +125,7 @@ public class GameManager : MonoBehaviour {
 
 		levelImage = GameObject.Find("LevelImage");
 		levelImage.SetActive (true);
+
 		levelText = levelImage.GetComponentInChildren<Text> ();
 		levelText.text = "Level " + level;
 		Invoke ("HideLevelImage", levelStartDelay);
@@ -182,12 +177,11 @@ public class GameManager : MonoBehaviour {
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		mainCamera.GetComponent<CameraController> ().enabled = false;
 
-		Invoke ("deathScreen", playerDieDelay);
+		Invoke ("DeathScreen", playerDieDelay);
 	}
 
-	void deathScreen()
+	void DeathScreen()
 	{
-
 		gameOverImage.SetActive (true);
 		gameOverText = gameOverImage.GetComponentInChildren<Text> ();
 		gameOverText.text = "You died at level " + level + ".";

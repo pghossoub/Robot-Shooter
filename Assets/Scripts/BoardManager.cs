@@ -62,7 +62,6 @@ public class BoardManager : MonoBehaviour {
 				if(x == -1 || x == columns || y == - 1|| y == rows)
 					toInstantiate = outerWallTiles[Random.Range (0, outerWallTiles.Length)];
 
-				//GameObject instance = Instantiate(toInstantiate, new Vector3 (x,y,0f), Quaternion.identity) as GameObject;
 				GameObject instance = InstantiateInGrid(toInstantiate, new Vector3 (x,y,0f), Quaternion.identity) as GameObject;
 				instance.transform.SetParent(boardHolder);
 			}
@@ -116,10 +115,5 @@ public class BoardManager : MonoBehaviour {
 		InitialiseList ();
 		LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
 		StartCoroutine(SetupCharacters(level));
-
-		//int enemyCount = (int)Mathf.Log (level, 2f);
-		//LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
-		//Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
-		//InstantiateInGrid (exit, new Vector3 (columns - 1, rows - 1, 0F), Quaternion.identity);
 	}
 }

@@ -26,13 +26,10 @@ public class RangedEnemy : Enemy {
 		StartCoroutine(Attack());
 	}
 
-	//protected override void Update () {
-	protected virtual void FixedUpdate () {	
-		//base.Update ();
-		//Debug.Log("isDashing = " + isDashing);//true
+	protected virtual void FixedUpdate () 
+	{
 		behaviorTimer += Time.deltaTime;
 		if(!isBouncing && !isDashing)
-			//base.Update ();
 			StartCoroutine(Move());
 	}
 

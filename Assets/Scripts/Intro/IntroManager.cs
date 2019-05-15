@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour {
 	
-	void Update () {
-		
+	void Update () 
+	{
 		if (Input.GetButton ("Fire1")) {
 			SceneManager.LoadScene ("main");
 		}
