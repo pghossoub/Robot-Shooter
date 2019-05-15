@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour {
 		score = 0f;
 		gameOver = false;
 		readyToReset = false;
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("main");
 	}
 
 	public void Quit()

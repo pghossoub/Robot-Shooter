@@ -169,6 +169,6 @@ public class PlayerController : MonoBehaviour {
 	private void NewLevel()
 	{
 		GameManager.instance.timer += 5f;
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("main");
 	}
 }

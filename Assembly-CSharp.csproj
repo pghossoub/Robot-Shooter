@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\EnemyBullet.cs" />
      <Compile Include="Assets\Scripts\EnemyGreen.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Intro\IntroManager.cs" />
      <Compile Include="Assets\Scripts\MeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
