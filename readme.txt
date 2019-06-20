@@ -1,4 +1,5 @@
-![alt text](https://github.com/pghossoub/Robot-Shooter/blob/master/Screens/RS2.png)
+
+Author : Pierre Ghossoub
 
 This game is an arcade-like 2D top down shooter.
 It is a solo project for training purpose.
