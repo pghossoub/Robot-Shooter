@@ -1,4 +1,4 @@
-![alt text](Screens/RS2.png)
+![Alt text](Screens/RS2.png?raw=true "Robot Shooter")
 
 Author : Pierre Ghossoub
 
@@ -11,7 +11,7 @@ This is my first game, and I consider it like a training ground.
 
 It was made with Unity 5.6.6f2
 
-You can launch the game with RobotShooter_v1.1.exe, in the Builds file.
+You can launch the game with RobotShooter_v1.1.exe, in the Builds folder.
 
 
 
