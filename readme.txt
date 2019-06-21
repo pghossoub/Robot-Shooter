@@ -1,4 +1,7 @@
 ![Alt text](https://github.com/pghossoub/Robot-Shooter/blob/master/Screens/RS2.png)
+![My image](pghossoub.github.com/Robot-Shooter/blob/master/Screens/RS2.png)
+![My image](pghossoub.github.com/Robot-Shooter/Screens/RS2.png)
+
 
 Author : Pierre Ghossoub
 
