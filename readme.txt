@@ -1,4 +1,6 @@
 ![Alt text](https://github.com/pghossoub/Robot-Shooter/blob/master/Screens/RS2.png)
+![Alt text](/blob/master/Screens/RS2.png?raw=true)
+![Alt text](/Screens/RS2.png?raw=true)
 ![My image](pghossoub.github.com/Robot-Shooter/blob/master/Screens/RS2.png)
 ![My image](pghossoub.github.com/Robot-Shooter/Screens/RS2.png)
 
