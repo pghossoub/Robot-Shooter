@@ -1,9 +1,3 @@
-![Alt text](https://github.com/pghossoub/Robot-Shooter/blob/master/Screens/RS2.png)
-![Alt text](/blob/master/Screens/RS2.png?raw=true)
-![Alt text](/Screens/RS2.png?raw=true)
-![My image](pghossoub.github.com/Robot-Shooter/blob/master/Screens/RS2.png)
-![My image](pghossoub.github.com/Robot-Shooter/Screens/RS2.png)
-
 
 Author : Pierre Ghossoub
 
@@ -18,6 +12,7 @@ It was made with Unity 5.6.6f2
 
 You can launch the game with RobotShooter_v1.1.exe, in the Builds folder.
 
+Screenshots: https://github.com/pghossoub/Robot-Shooter/wiki
 
 
 
