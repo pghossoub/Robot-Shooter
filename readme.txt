@@ -10,11 +10,14 @@ This is my first game, and I consider it like a training ground.
 
 It was made with Unity 5.6.6f2
 
-You can launch the game with RobotShooter_v1.1.exe, in the Builds folder.
-
 Screenshots: https://github.com/pghossoub/Robot-Shooter/wiki
 
-
+To play the game:
+- Download zip
+- Extract zip
+- Go to "Builds" folder
+- Launch "RobotShooter_v1.1.exe"
+- A mouse is required
 
 All the assets are mine or free of right.
 
