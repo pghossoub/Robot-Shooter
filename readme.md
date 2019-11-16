@@ -11,6 +11,10 @@ It was made with Unity 5.6.6f2
 
 ![Alt text](/Screens/RS2.png?raw=true "screenshot1")
 
+![Alt text](/Screens/RS3b.png?raw=true "screenshot2")
+
+![Alt text](/Screens/RS5.png?raw=true "screenshot3")
+
 
 To play the game:
 - Download zip
